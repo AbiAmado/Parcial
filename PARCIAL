@@ -1,0 +1,25 @@
+Parcial 2 – Programación de computadores
+Ciclos, Funciones y Arreglos
+La tienda de ropa ANIF APOR los ha contratado para implementar un programa que lleve el
+inventario de las existencias y registre los pedidos realizados.
+La empresa cuenta 3 líneas de ropa (blusas, faldas y jeans), en donde cada una cuenta con una
+lista de entre 3 y 10 modelos. De cada modelo se guarda su ID y el número de piezas en
+existencia. El ID de los modelos se calcula a partir de la suma del ID de la línea a la que
+pertenecen y en código serial asignado a medida que se van creando. Como se ve en la figura,
+los IDs de cada línea de ropa cambian de 100 en 100 (ID 0 va de 0 a 99, ID 1 va de 100 a 199,
+etc.). Usted debe realizar la transformación entre código del modelo y el índice real del vector.
+El número máximo de existencias por cada modelo es 20.
+El programa debe leer por pantalla un pedido que incluya los códigos de las modelos que desea
+y el número de piezas de cada uno. No más de 10 modelos se pueden pedir, y entre 1 y 5 piezas
+de cada modelo.
+Si el pedido se puede suplir, gracias a que hay suficientes existencias de cada una de las piezas,
+proceda a decir que la compra fue exitosa, actualice el inventario y muestre por pantalla el nuevo
+inventario. Si alguna de las piezas no cuenta con las existencias suficientes, no se puede suplir
+el pedido, y se debe mostrar por pantalla.
+La evaluación del programa se realizará de la siguiente manera:
+- El programa corre sin errores y con todas las funcionalidades: 15%
+- El programa define las estructuras de datos y funciones adecuadamente: 20%
+- El programa genera el inventario: 20%
+- El programa genera el pedido: 15%
+- El programa evalúa las existencias para suplir el inventario: 20%
+- El programa muestra por pantalla el inventario: 10%
