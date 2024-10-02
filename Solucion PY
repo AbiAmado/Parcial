@@ -1,0 +1,38 @@
+import numpy as np
+
+def cargar_inventario(archivo="inventario.csv"):
+    # Carga el inventario desde un archivo CSV
+    # Aquí se implementaría la lógica para leer el archivo y cargar los datos en la matriz
+    inventario = np.array([
+        [[5, 7, 14, 12, -1, -1, -1, -1, -1, -1],
+         [8, 15, 3, -1, -1, -1, -1, -1, -1, -1],
+         [12, 5, 3, 14, 11, 12, -1, -1, -1, -1]],
+        # ... otras líneas
+    ])
+    return inventario
+
+def procesar_pedido(inventario, pedido_ids, pedido_cantidades):
+    for i, id_modelo in enumerate(pedido_ids):
+        linea = id_modelo // 100
+        indice_modelo = id_modelo % 100
+        if inventario[linea][indice_modelo] < pedido_cantidades[i]:
+            print(f"No hay suficiente stock para el modelo {id_modelo}")
+            return False
+        inventario[linea][indice_modelo] -= pedido_cantidades[i]
+    print("Pedido procesado con éxito")
+    return True
+
+def mostrar_inventario(inventario):
+    # Imprime el inventario en un formato legible
+    print("Inventario:")
+    # ... implementación de la impresión
+
+# Ejemplo de uso
+inventario = cargar_inventario()
+
+# Pedido de ejemplo
+pedido_ids = [102, 200, 3, 100, 204]
+pedido_cantidades = [2, 3, 1, 4, 3]
+
+if procesar_pedido(inventario, pedido_ids, pedido_cantidades):
+    mostrar_inventario(inventario)
