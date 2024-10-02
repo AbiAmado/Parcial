@@ -1,0 +1,63 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+// Estructura para representar un pedido
+struct Pedido {
+    int id_modelo;
+    int cantidad;
+};
+
+// Función para cargar el inventario desde un archivo (a implementar)
+vector<vector<int>> cargar_inventario(string archivo) {
+    // Lógica para leer el archivo CSV y cargar los datos en un vector de vectores
+    // ...
+    vector<vector<int>> inventario = {
+        {5, 7, 14, 12, -1, -1, -1, -1, -1, -1},
+        {8, 15, 3, -1, -1, -1, -1, -1, -1, -1},
+        {12, 5, 3, 14, 11, 12, -1, -1, -1, -1}
+    };
+    return inventario;
+}
+
+// Función para procesar un pedido
+bool procesar_pedido(vector<vector<int>>& inventario, const vector<Pedido>& pedidos) {
+    for (const Pedido& pedido : pedidos) {
+        int linea = pedido.id_modelo / 100;
+        int indice_modelo = pedido.id_modelo % 100;
+        if (inventario[linea][indice_modelo] < pedido.cantidad) {
+            cout << "No hay suficiente stock para el modelo " << pedido.id_modelo << endl;
+            return false;
+        }
+        inventario[linea][indice_modelo] -= pedido.cantidad;
+    }
+    cout << "Pedido procesado con éxito" << endl;
+    return true;
+}
+
+// Función para mostrar el inventario
+void mostrar_inventario(const vector<vector<int>>& inventario) {
+    cout << "Inventario:" << endl;
+    // Implementación para mostrar el inventario de forma legible
+    // ...
+}
+
+int main() {
+    vector<vector<int>> inventario = cargar_inventario("inventario.csv"); // Reemplazar con el nombre del archivo
+
+    // Ejemplo de pedido
+    vector<Pedido> pedidos = {
+        {102, 2},
+        {200, 3},
+        {3, 1},
+        {100, 4},
+        {204, 3}
+    };
+
+    if (procesar_pedido(inventario, pedidos)) {
+        mostrar_inventario(inventario);
+    }
+
+    return 0;
+}
